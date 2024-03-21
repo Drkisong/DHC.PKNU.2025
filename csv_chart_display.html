@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Chart Display with slide</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1 style = "color: hotpink; background-color: lightgreen">Bio-signal monitoring</h1>
+
+    <div>
+        <input type="file" id="csvFileInput" accept=".csv" style="display:block; margin: 20px auto;">
+    </div>
+    <div style="width: 90vw; margin: 1% auto; height: 70vh; border:5px solid hotpink">
+        <canvas id="chartCanvas"></canvas>
+    </div>
+    <input type="range" id="dataRangeSlider" min="0" max="100" value="100" style="display:block; margin: 20px auto; width: 80%;" oninput="updateChartView()">
+    <script src = "csv_chart_display.js"></script>
+</body>
+</html>
