@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open API with JSON</title>
+</head>
+<body>
+    <h1>부산 동물병원 데이터 뷰</h1>
+    <div>
+    <p id="data-container"></p>
+    </div>
+
+    <script>
+        const url = "https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=json";
+
+        /*
+        const url ="https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=xml";
+        */
+
+        // Function to fetch data from the provided URL
+        function fetchData() {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text(); // Fetch as text because it's XML
+                })
+                .then(xmlString => {
+                    displayData(xmlString);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    document.getElementById('data-container').innerHTML = 'Failed to load data';
+                });
+        }
+
+        // Function to display data in the HTML page
+        function displayData(xmlString) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+            const xmlPretty = formatXml(xmlDoc.documentElement);
+            document.getElementById('data-container').innerHTML = '<pre>' + xmlPretty + '</pre>';
+        }
+
+        // Function to format XML data as a string
+        function formatXml(xmlNode, indent = "") {
+            let text = indent + "<" + xmlNode.nodeName;
+            for (let i = 0; i < xmlNode.attributes.length; i++) {
+                text += " " + xmlNode.attributes[i].nodeName + '="' + xmlNode.attributes[i].nodeValue + '"';
+            }
+            text += ">";
+
+            for (let i = 0; i < xmlNode.childNodes.length; i++) {
+                let child = xmlNode.childNodes[i];
+                if (child.nodeType === 3) { // text node
+                    text += child.nodeValue;
+                } else {
+                    text += "\n" + formatXml(child, indent + "    ") + "\n" + indent;
+                }
+            }
+
+            text += "</" + xmlNode.nodeName + ">";
+            return text;
+        }
+
+        // Call fetchData on page load
+        window.onload = fetchData;
+
+    </script>
+    
+</body>
+</html>
