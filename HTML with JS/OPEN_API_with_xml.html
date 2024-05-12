@@ -12,13 +12,14 @@
     </div>
 
     <script>
-        const url = "https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=json";
-
         /*
-        const url ="https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=xml";
+        const url = "https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=json";
         */
+        
+        const url ="https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=xml";
+        
 
-        // Function to fetch data from the provided URL
+
         function fetchData() {
             fetch(url)
                 .then(response => {
@@ -36,7 +37,7 @@
                 });
         }
 
-        // Function to display data in the HTML page
+
         function displayData(xmlString) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlString, "application/xml");
@@ -44,7 +45,6 @@
             document.getElementById('data-container').innerHTML = '<pre>' + xmlPretty + '</pre>';
         }
 
-        // Function to format XML data as a string
         function formatXml(xmlNode, indent = "") {
             let text = indent + "<" + xmlNode.nodeName;
             for (let i = 0; i < xmlNode.attributes.length; i++) {
@@ -65,7 +65,6 @@
             return text;
         }
 
-        // Call fetchData on page load
         window.onload = fetchData;
 
     </script>
