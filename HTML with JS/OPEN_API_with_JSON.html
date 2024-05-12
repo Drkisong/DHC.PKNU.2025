@@ -19,9 +19,9 @@
         fetch(url)
         .then((res)=>res.josn())
         .then((data) => {
-            console.log(JSON.stringify(data,null,1));
+            document.getElementById('data')=JSON.stringify(data,null,1);
         });
-        
+
     </script>
     
 </body>
