@@ -18,29 +18,26 @@
         const url ="https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=xml";
         */
 
-        function fetchData(){
+
+        // Function to fetch data from the provided URL
+        function fetchData() {
             fetch(url)
                 .then(response => {
-                    if(!response.ok){
-                        throw new Error('Network response was not ok'+ response.statusText);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
                     }
                     return response.json();
                 })
-                .then(data =>{
+                .then(data => {
                     displayData(data);
                 })
-                .catch(error =>{
+                .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
                     document.getElementById('data-container').innerHTML = 'Failed to load data';
                 });
         }
 
-        fetch(url)
-        .then((res)=>res.josn())
-        .then((data) => {
-            document.getElementById('data')=JSON.stringify(data,null,1);
-        });
-
+        // Function to display data in the HTML page
         function displayData(data) {
             const container = document.getElementById('data-container');
             container.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
