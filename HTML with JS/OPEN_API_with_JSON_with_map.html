@@ -62,6 +62,33 @@
             position: Ahospital
         }));
 
+
+        function callback(data){
+            for(let i=0; i<data.result.length; i++){
+                markers.push(new naver.maps.Marker({
+                    map: map,
+                    position: new naver.maps.LatLng(parseFloat(data.result[i].lat), parseFloat(data.result[i].lng))
+                }));
+                infowindows.push(new naver.maps.InfoWindow({
+                    content: ['<div class="iw_inner">',
+                        '<h3>',data.result[i].name,'(이)네 집</h3>',
+                        '</div>'
+                    ].join(''),
+                    zIndex: 10
+                }));
+            }
+            for(let i=0; i<markers.length; i++){
+                naver.maps.Event.addListener(markers[i], "click", function(e) {
+                if (infowindows[i].getMap()) {
+                    infowindows[i].close();
+                } else {
+                    infowindows[i].open(map, markers[i]);
+                }
+                });
+            }
+        infowindows[0].open(map, markers[0]);
+        }
+
     </script>
     
 </body>
