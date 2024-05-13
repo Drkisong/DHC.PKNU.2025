@@ -26,7 +26,13 @@
                 })
                 .then(data => {
                     displayData(data);
-                    jitems = data.items;
+
+                    //json+map
+                    if(data.getTblAnimalHospital.header.resultCode === "00"){
+                        overlaydataonmap(data.getTblAnimalHospital.body.items.item);
+                    } else{
+                        document.getElementById('data-container').innerHTML = 'Failed to load data';  
+                    }                   
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
@@ -42,8 +48,7 @@
 
         // Call fetchData on page load
         window.onload = fetchData;
-        console.log('${data.getTblAnimalHospital.body.items.item.lat}'+'${data.getTblAnimalHospital.body.items.item.lon}');
-
+        
         ///////// map api ////////////////////////////////////////////////////////////////
         var mapOptions ={
             center: new naver.maps.LatLng(35.13362847853523,129.1042609597207), zoom: 10
@@ -57,6 +62,17 @@
             position: Ahospital
         });
 
+          //json+Map
+        function overlaydataonmap (itmes) {
+            itmes.forEach(item => {
+                if(item.lat && item.lon){
+                    var marker = new naver.maps.Marker({
+                        position: new naver.maps.LatLng(parseFloat(item.lat), parseFloat(item.lon)),
+                        map: map
+                    });
+                }
+            });
+        }
 
         var contentString = [
                 '<div class="iw_inner">',
