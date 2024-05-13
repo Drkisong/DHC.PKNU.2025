@@ -62,18 +62,6 @@
             position: Ahospital
         });
 
-          //json+Map
-        function overlaydataonmap (itmes) {
-            itmes.forEach(item => {
-                if(item.lat && item.lon){
-                    var marker = new naver.maps.Marker({
-                        position: new naver.maps.LatLng(parseFloat(item.lat), parseFloat(item.lon)),
-                        map: map
-                    });
-                }
-            });
-        }
-
         var contentString = [
                 '<div class="iw_inner">',
                 '<h3>닥터주 동물병원</h3>',
@@ -95,6 +83,18 @@
         });
         
         infowindow.open(map, marker);
+
+        //json+Map
+        function overlaydataonmap (itmes) {
+            itmes.forEach(item => {
+                if(item.lat && item.lon){
+                    var marker = new naver.maps.Marker({
+                        position: new naver.maps.LatLng(parseFloat(item.lat), parseFloat(item.lon)),
+                        map: map
+                    });
+                }
+            });
+        }        
 
         /*
         function callback(data){
