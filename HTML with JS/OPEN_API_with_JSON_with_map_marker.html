@@ -96,13 +96,13 @@
                 }
             });
 
-            var contentString = `
-                        <div>
-                            <h3>${item.animal_hospital}</h3>
-                            <p>Address: ${item.road_address}</p>
-                            <p>Tel: ${item.tel}</p>
-                        </div>
-                    `;
+            var contentString = [
+                        '<div>'
+                            '<h3>${item.animal_hospital}</h3>',
+                            '<p>Address: ${item.road_address}</p>',
+                            '<p>Tel: ${item.tel}</p>',
+                        '</div>'
+                    ].join('');
 
             var infowindow = new naver.maps.InfoWindow({
                 content: contentString
