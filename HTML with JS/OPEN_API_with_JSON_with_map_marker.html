@@ -89,8 +89,8 @@
             itmes.forEach(item => {
                 if(item.lat && item.lon){
                     var marker = new naver.maps.Marker({
-                        position: new naver.maps.LatLng(parseFloat(item.lat), parseFloat(item.lon)),
-                        map: map
+                        map: map,
+                        position: new naver.maps.LatLng(parseFloat(item.lat), parseFloat(item.lon))
                     });
                 }
             });
