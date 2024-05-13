@@ -109,11 +109,8 @@
                 content: contentString
             });
 
-            naver.maps.Event.addListener(marker, "click", function(e) {
-            if (infowindow.getMap()){
+            naver.maps.Event.addListener(marker, "click", function() {
                 infowindow.open(map, marker);
-            } else {
-                infowindow.close();
             }
                 
             });
