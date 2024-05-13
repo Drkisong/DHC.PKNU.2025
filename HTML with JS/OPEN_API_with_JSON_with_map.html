@@ -49,6 +49,15 @@
 
         var map = new naver.maps.Map('map',mapOptions);
 
+        var Ahospital = new naver.maps.LatLng(35.16302,129.177735);
+        var makers = [];
+        var infowindow = [];
+
+        var makers.push(new naver.maps.Marker({
+            map: map,
+            position: Ahospital
+        }));
+
     </script>
     
 </body>
