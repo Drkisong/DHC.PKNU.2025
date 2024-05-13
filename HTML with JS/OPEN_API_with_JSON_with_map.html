@@ -10,14 +10,11 @@
     <div>
     <p id="data-container"></p>
     </div>
+    <div id ="map" style="width:100%; height:800px;"></div>
 
     <script>
+        //Open API for JSON data import
         const url = "https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=json";
-
-        /*
-        const url ="https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=xml";
-        */
-
 
         // Function to fetch data from the provided URL
         function fetchData() {
@@ -45,7 +42,11 @@
 
         // Call fetchData on page load
         window.onload = fetchData;
-
+    </script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=n2ugwll0bi&submodules=geocoder">
+      var map = new naver.maps.Map("map", {
+        center: new naver.maps.LatLng(37.3595316, 127.1052133), zoom: 15, mapTypeControl: true 
+    });  
     </script>
     
 </body>
