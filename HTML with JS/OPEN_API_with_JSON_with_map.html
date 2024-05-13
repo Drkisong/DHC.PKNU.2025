@@ -69,9 +69,9 @@
 
         naver.maps.Event.addListener(marker,"click",function(e) {
             if (infowindow.getMap()) {
-                 infowindow.close();
+                 infowindow.open(map, marker);
             } else {
-                infowindow.open(map, marker);
+                infowindow.close();
             }
         });
         
