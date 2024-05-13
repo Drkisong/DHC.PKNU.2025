@@ -42,27 +42,42 @@
         // Call fetchData on page load
         window.onload = fetchData;
 
-
-
-
-
         ///////// map api ////////////////////////////////////////////////////////////////
         var mapOptions ={
             center: new naver.maps.LatLng(35.13362847853523,129.1042609597207), zoom: 10
         };
 
         var map = new naver.maps.Map('map',mapOptions);
-
         var Ahospital = new naver.maps.LatLng(35.16302,129.177735);
-        var makers = [];
-        var infowindow = [];
 
-        makers.push(new naver.maps.Marker({
+        var maker = new naver.maps.Marker({
             map: map,
             position: Ahospital
-        }));
+        });
 
+        var contentString = [
+                '<div class="iw_inner">',
+                '   <h3>닥터주 동물병</h3>',
+                '   <p>부산광역시 해운대구 좌동순환로402번길 8, 204호 (좌동, 피렌체오피스텔)<br />',
+                '   </p>',
+                '</div>'
+            ].join('');
 
+        var infowindow = new naver.maps.InfoWindow({
+            cotent: contentString
+        })
+
+        naver.maps.Event.addListener(maker,"click",function(e) {
+            if (infowindow.getMap()) {
+                 infowindow.close();
+            } else {
+                infowindow.open(map, marker);
+            }
+        });
+        
+        infowindow.open(map, marker);
+
+        /*
         function callback(data){
             for(let i=0; i<data.result.length; i++){
                 markers.push(new naver.maps.Marker({
@@ -88,6 +103,7 @@
             }
         infowindows[0].open(map, markers[0]);
         }
+        */
 
     </script>
     
