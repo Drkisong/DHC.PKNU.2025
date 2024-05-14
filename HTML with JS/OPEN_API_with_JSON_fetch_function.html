@@ -24,6 +24,9 @@
                 .then((response) => response.json())
                 .then((data)=>{
                     document.getElementById('data-container').innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById('data-container').innerHTML = 'Failed to load data';
                 });
         }
 
