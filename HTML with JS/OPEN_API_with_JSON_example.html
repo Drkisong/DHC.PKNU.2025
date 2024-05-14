@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open API with JSON</title>
+</head>
+<body>
+    <h1>부산 동물병원 데이터 정보</h1>
+    <div>
+        <p><strong>"fetch()"함수</strong>를 사용한 JSON 호출</p>
+    </div>
+
+    <div>
+        <p><strong>Load JSON data</strong></p>
+        <p id="data-container"></p>
+    </div>
+
+    <script>
+        const url = "https://apis.data.go.kr/6260000/BusanAnimalHospService/getTblAnimalHospital?serviceKey=oQzUb0g28erBj1aZ0uHgfoDp6Pl9A4oR690nGq30O0eyKT1YIw9NWwLkGX0qMX5tEfhEf2Ct6WeLEcJwjSBJ%252Bg%253D%253D&pageNo=1&numOfRows=10&resultType=json";
+
+        function fetchData_v1(){
+            fetch(url)
+                .then((response) => response.json())
+                .then((data)=>{
+                    document.getElementById('data-container').innerHTML = JSON.stringify(data, null, 2);
+                });
+        }
+
+
+        function fetchData() {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayData(data);
+                })
+                .catch(error => {
+                    //console.error('There was a problem with the fetch operation:', error);
+                    document.getElementById('data-container').innerHTML = 'Failed to load data';
+                });
+        }
+
+        function displayData(data) {
+            const container = document.getElementById('data-container');
+            container.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        }
+
+        //window.onload = fetchData;  
+        window.onload = fetchData_v1;  
+
+    </script>
+    
+</body>
+</html>
