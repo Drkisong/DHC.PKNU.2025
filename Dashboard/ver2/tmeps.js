@@ -1,0 +1,32 @@
+const tempChart = document.getElementById('temp').getContext('2d')
+const temps = new Chart(tempChart,{
+    type:'line',
+    data:{
+        labels:['mon','tue','wed','thu','fri','sat','sun'],
+        datasets:[{
+            data:[30,32.5,36.5,37.5,39.0,38.4,36.5],
+            borderColor:['rgb(59,197,154,1)'],
+            borderWidth:2
+        }]
+    },
+    options:{
+        elements:{
+            point:{
+                radius:0
+            }
+        },
+        scales:{
+            x:{
+                display:false
+            },
+            y:{
+                display:false
+            }
+        },
+        plugins:{
+            legend:{
+                display:false 
+            }
+        }
+    }
+})
