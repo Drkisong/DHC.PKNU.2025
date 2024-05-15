@@ -4,13 +4,13 @@ const tarsale = new Chart(tarsaleChart,{
     data:{
         labels:['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'],
         datasets:[{
-            data:[1200,1990,387,598,276,376,654,764,2546,454,776,543],
+            data:[70,75,65,78,75,63,65,76,46,45,76,54],
         borderColor:[
             'rgb(59,197,154)'
         ],
         borderWidth:1
         },{
-            data:[1100,1390,1387,798,376,776,254,464,1146,654,476,894],
+            data:[60,65,70,72,80,76,54,64,46,65,76,89],
         borderColor:[
             'rgb(153,102,255)'
         ],
