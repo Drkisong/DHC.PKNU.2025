@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Healtchare data Dashboard</title>
+</head>
+<body class="body">
+    <section class="header">
+        <div class="logo">
+            <i class="ri-menu-line menu"></i>
+            <h2><span>Dashboard :</span> Healthcare data</h2>
+        </div>
+        <div class="header--items">
+            <i class="ri-search-2-line"></i>
+            <div class="dark--theme--btn">
+                <i class="ri-moon-line moon"></i>
+                <i class="ri-sun-line sun"></i>
+            </div>
+                <i class="ri-notification-2-line"></i>
+            <div class="profile">
+                <img src="https://upload.wikimedia.org/wikipedia/ko/a/a2/PKNU_Logo.png?20210915113624" alt="PKNU_Logo" >
+            </div>
+        </div>
+    </section>
+    <section class="main">
+        <div class="sidebar">
+            <ul class="sidebar--items">
+                <li>
+                    <a href="#" class="active">
+                        <span class="icon"><i class="ri-bar-chart-line"></i></span>
+                        <div class="sidebar--item">Overview</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-heart-pulse-fill"></i></span>
+                        <div class="sidebar--item">Heart</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-thermometer-fill"></i></span>
+                        <div class="sidebar--item">Body temperature</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-capsule-fill"></i></span>
+                        <div class="sidebar--item">Prescription</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-mental-health-fill"></i></span>
+                        <div class="sidebar--item">Mental health</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-settings-3-line"></i></span>
+                        <div class="sidebar--item">Settings</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="sidebar--bottom--items">
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-question-line"></i></span>
+                        <div class="sidebar--item">Help</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="ri-earth-line"></i></span>
+                        <div class="sidebar--item">Location (Map)</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main--container">
+            <div class="section--title">
+                <h3 class="title">Gender: Woman, Age: 20</h3>
+                <select name="date" id="date">
+                    <option value="last7">Last 7 days</option>
+                    <option value="lastmonth">Last month</option>
+                    <option value="lastyear">Last year</option>
+                    <option value="alltime">All time</option>
+                </select>
+            </div>
+            <div class="cards">
+                <div class="card card-1">
+                    <div class="card--title">
+                        <span class="card--icon icon"><i class="ri-heart-pulse-fill"></i></span>
+                        <span>Heart</span>
+                    </div>
+                    <h3 class="card--value">64 bpm <i class="ri-arrow-up-circle-fill up"></i></h3>
+                    <h5 class="more">during 3 weeks</h5>
+                    <div class="chart">
+                        <canvas id="sales"></canvas>
+                    </div>
+                </div>
+                <div class="card card-2">
+                    <div class="card--title">
+                        <span class="card--icon icon"><i class="ri-thermometer-fill"></i></span>
+                        <span>Temperature</span>
+                    </div>
+                    <h3 class="card--value">36.5 C <i class="ri-arrow-down-circle-fill down"></i></h3>
+                    <h5 class="less">during 3 weeks</h5>
+                    <div class="chart">
+                        <canvas id="temp"></canvas>
+                    </div>
+                </div>
+                <div class="card card-3">
+                    <div class="card--title">
+                        <span class="card--icon icon"><i class="ri-capsule-fill"></i></span>
+                        <span>Prescription</span>
+                    </div>
+                    <h3 class="card--value">50 <i class="ri-arrow-up-circle-fill up"></i></h3>
+                    <h5 class="more">during 3 weeks</h5>
+                    <div class="chart">
+                        <canvas id="products"></canvas>
+                    </div>
+                </div>
+                <div class="card card-4">
+                    <div class="card--title">
+                        <span class="card--icon icon"><i class="ri-mental-health-fill"></i></span>
+                        <span>Mental health</span>
+                    </div>
+                    <h3 class="card--value">100 <i class="ri-arrow-down-circle-fill down"></i></h3>
+                    <h5 class="less">during 2 weeks</h5>
+                    <div class="chart">
+                        <canvas id="mental"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="target-vs-sales--container">
+                <div class="section--title">
+                    <h3 class="title"><i class="ri-run-fill"></i>Weight difference</h3>
+                    <div class="sales--value">
+                        <div class="target">
+                            <i class="ri-checkbox-blank-circle-fill circle"></i>
+                            Target <span>&nbsp; weight</span>
+                        </div>
+                        <div class="current">
+                            <i class="ri-checkbox-blank-circle-fill circle"></i>
+                            Current <span>&nbsp; weight</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="target--vs--sales">
+                    <canvas id="tarsale"></canvas>
+                </div>
+            </div>
+            <div class="table">
+                <div class="section--title">
+                    <h3 class="title"><i class="ri-hospital-line"></i> Hospital information</h3>
+                    <div></div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hospital name</th>
+                            <th>Hospital ID</th>
+                            <th>location</th>
+                            <th>Number of bed</th>
+                            <th>Emergency room</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Paik Hospital</td>
+                            <td>#231234</td>
+                            <td>Busan</td>
+                            <td>331</td>
+                            <td>12</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>Park Hospital</td>
+                            <td>#231234</td>
+                            <td>Busan</td>
+                            <td>331</td>
+                            <td>12</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>Baik Hospital</td>
+                            <td>#231234</td>
+                            <td>Busan</td>
+                            <td>331</td>
+                            <td>12</td>
+                            <td>Available</td>
+                        </tr>
+                        <tr>
+                            <td>Gaik Hospital</td>
+                            <td>#231234</td>
+                            <td>Busan</td>
+                            <td>331</td>
+                            <td>12</td>
+                            <td>Unavailable</td>
+                        </tr>
+                        <tr>
+                          <td>Min Hospital</td>
+                          <td>#231234</td>
+                          <td>Busan</td>
+                          <td>331</td>
+                          <td>12</td>
+                          <td>Unavailable</td>
+                        </tr>
+                        <tr>
+                          <td>Paik Hospital</td>
+                          <td>#231234</td>
+                          <td>Busan</td>
+                          <td>331</td>
+                          <td>12</td>
+                          <td>Unavailable</td>
+                        </tr>
+                        <tr>
+                          <td>Paik Hospital</td>
+                          <td>#231234</td>
+                          <td>Busan</td>
+                          <td>331</td>
+                          <td>12</td>
+                          <td>Unavailable</td>
+                        </tr>
+                        <tr>
+                          <td>Paik Hospital</td>
+                          <td>#231234</td>
+                          <td>Busan</td>
+                          <td>331</td>
+                          <td>12</td>
+                          <td>Unavailable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+    <script src="heart.js"></script>
+    <script src="tmeps.js"></script>
+    <script src="prescription.js"></script>
+    <script src="mentalhelalth.js"></script>
+    <script src="tarsale.js"></script>
+</body>
+</html>
