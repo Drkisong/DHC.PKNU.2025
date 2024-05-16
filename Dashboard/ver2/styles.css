@@ -365,7 +365,7 @@ h5{
     padding: 15px;
     background: var(--bg-color-first);
     border-radius: 10px;
-    height: 400px;
+    height: 300px;
     overflow-y: scroll;
 }
 
