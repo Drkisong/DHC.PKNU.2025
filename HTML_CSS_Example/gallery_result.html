@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Grid Layout</title>
+  <style>      
+    .gallery{
+      width:700px;   
+      margin: 20px auto;      
+      display:grid;
+      grid-template-areas: 
+        "photo1 photo1 photo2"
+        "photo1 photo1 photo3"
+        "photo4 photo5 photo6";
+      gap:5px;    
+    }
+
+    .gallery img{
+      width:100%;
+      height:100%;
+      border-radius: 10px;
+      object-fit:cover;
+    }
+
+    .photo1 {
+      grid-area: photo1
+    }
+    .photo2 {
+      grid-area: photo2
+    }
+    .photo3 {
+      grid-area: photo3
+    }
+    .photo4 {
+      grid-area: photo4
+    }
+    .photo5 {
+      grid-area: photo5
+    }
+    .photo6 {
+      grid-area: photo6
+    }
+  </style>
+</head>
+<body>
+    <div class="gallery">
+        <img class="photo1" src="https://cdn.dailyvet.co.kr/wp-content/uploads/2024/05/15231647/20240515ceva_experts4.jpg" alt="고양이1">
+        <img class="photo2" src="https://www.irobotnews.com/news/photo/201411/3688_8514_2949.jpg" alt="팽귄1">
+        <img class="photo3" src="https://flexible.img.hani.co.kr/flexible/normal/758/492/imgdb/original/2024/0808/20240808502492.jpg" alt="고양이2">
+        <img class="photo4" src="https://cdn.smarttoday.co.kr/news/photo/202308/34372_27876_242.png" alt="팽귄2">
+        <img class="photo5" src="https://i.namu.wiki/i/4ZLDpmfqlqcgF0sxKpGTri78khYkcnqfGDKHl9FK-GfchIu4nfk7Q3aWWCN_HgAG7zrRB1FzuxzmjaNVtEA7zg.webp" alt="팽귄3">
+        <img class="photo6" src="https://img.animalplanet.co.kr/news/2019/09/04/700/55mc84609q7881153yl7.jpg" alt="팽귄4">
+        </div>
+</body>
+</html>
